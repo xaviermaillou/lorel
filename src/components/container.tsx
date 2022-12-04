@@ -1,15 +1,23 @@
 import React from "react"
+import { fusionSpacing } from "../lib"
+import { SpacingShortcuts, Spacings, CommonProps } from "../types/style"
 
-interface ContainerProps {
-    sx: React.CSSProperties
+const containerDefaultStyles = {
+    padding: Spacings[1]
+}
+
+interface ContainerProps extends CommonProps {
+
 }
 
 const Container = (props: ContainerProps) => {
-    const { sx } = props
-    return (
-        <div style={{ ...sx }}>
+    const styles = fusionSpacing(props.sx, props.spacing)
 
-        </div>
+    return (
+        <div style={{
+            ...styles
+        }}
+        ></div>
     )
 }
 
