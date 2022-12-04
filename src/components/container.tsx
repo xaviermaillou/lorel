@@ -1,9 +1,9 @@
 import React from "react"
-import { fusionSpacing } from "../lib"
-import { SpacingShortcuts, Spacings, CommonProps } from "../types/style"
+import { fusionStyles } from "../lib"
+import { SpacingKeys, SpacingValues, CommonProps } from "../types/style"
 
 const containerDefaultStyles = {
-    padding: Spacings[1]
+    padding: SpacingValues[1]
 }
 
 interface ContainerProps extends CommonProps {
@@ -11,7 +11,7 @@ interface ContainerProps extends CommonProps {
 }
 
 const Container = (props: ContainerProps) => {
-    const styles = fusionSpacing(props.sx, props.spacing)
+    const styles = fusionStyles(props.sx, props.spacing)
 
     return (
         <div style={{

@@ -1,18 +1,29 @@
 import React from "react";
-import { GenericMapping } from "../types";
-import { Spacings, SpacingShortcuts } from "../types/style";
+import { GenericCSSKeys, GenericCSSValues, GenericMapping } from "../types";
+import { SpacingValues, SpacingKeys } from "../types/style";
 
-export const fusionSpacing = (sx?: React.CSSProperties, map?: GenericMapping<SpacingShortcuts, Spacings>) => {
-    const spacing: {[index: string]: string} = {}
-    if (map) {
-        Object.entries(map).forEach(([key, value]) => {
-            const newKey = SpacingShortcuts[(key as keyof typeof SpacingShortcuts)] as string
-            const newValue = Spacings[Number(value)] as string
-            spacing[newKey] = newValue
-        })
+export const getValuesFromStyleMap = (map: any, keysEnum: any, valuesEnum: any) => {
+    const values: {[index: string]: string} = {}
+    Object.entries(map)?.forEach(([key, value]) => {
+        const newKey = keysEnum[(key as keyof typeof keysEnum)] as string
+        const newValue = valuesEnum[(value as keyof typeof valuesEnum)] as string
+        values[newKey] = newValue
+    })
+    return {
+        ...values,
+    }
+}
+
+export const fusionStyles = (
+    sx?: React.CSSProperties,
+    spacingsMap?: GenericMapping<SpacingKeys, SpacingValues>
+) => {
+    const spacings: {[index: string]: string} = {}
+    if (spacingsMap) {
+        getValuesFromStyleMap(spacingsMap, SpacingKeys, SpacingValues)
     }
     return {
         ...sx,
-        ...spacing,
+        ...spacings,
     }
 }

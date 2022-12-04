@@ -1,18 +1,7 @@
 import React from "react";
 import { GenericMapping } from "..";
 
-export enum Spacings {
-    "0px",
-    "24px",
-    "48px",
-    "72px",
-    "96px",
-    "192px",
-    "384px",
-    "768px",
-}
-
-export enum SpacingShortcuts {
+export enum SpacingKeys {
     p = "padding",
     pt = "padding-top",
     pr = "padding-right",
@@ -25,7 +14,18 @@ export enum SpacingShortcuts {
     ml = "margin-left",
 }
 
+export enum SpacingValues {
+    "0px",
+    "24px",
+    "48px",
+    "72px",
+    "96px",
+    "192px",
+    "384px",
+    "768px",
+}
+
 export interface CommonProps {
     sx?: React.CSSProperties
-    spacing?: GenericMapping<SpacingShortcuts, Spacings>
+    spacing?: GenericMapping<SpacingKeys, SpacingValues>
 }
