@@ -22,7 +22,9 @@ const fusionSubStyles = (map: any, keysEnum: any, valuesPalettesArray: any[], de
         const newKey = keysEnum[(key as keyof typeof keysEnum)] as string
         const newValue = value as Object
         Object.values(newValue)?.forEach((value, i) => {
-            values[newKey] += valuesPalettesArray[i][value]
+            console.log("palette", valuesPalettesArray[i])
+            console.log("value", value)
+            values[newKey] += valuesPalettesArray[i][value] + " "
         })
     })
     return {
@@ -37,7 +39,7 @@ export const fusionStyles = (
 ) => {
     const spacings = spacingsMap ? getValuesFromStyleMap(spacingsMap, SpacingKeys, spacingsPalette) as GenericCSSProps : null
     const borders = bordersMap ? fusionSubStyles(bordersMap, BorderKeys, [weightsPalette, colorsPalette], " solid") as GenericCSSProps : null
-    console.log(borders)
+    console.log("borders result", borders)
     return {
         ...sx,
         ...spacings,
