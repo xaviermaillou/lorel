@@ -1,7 +1,8 @@
 import React from "react";
-import { GenericCSSProps, GenericMapping } from "../types";
-import { SpacingValues, SpacingKeys } from "../types/style";
+import { GenericMapping } from "../types";
+import { SpacingValues, SpacingKeys, GenericCSSProps } from "../types/style";
 
+// TODO: find a better way for typing parameters
 export const getValuesFromStyleMap = (map: any, keysEnum: any, valuesEnum: any): GenericCSSProps => {
     const values: {[index: string]: string} = {}
     Object.entries(map)?.forEach(([key, value]) => {
@@ -18,7 +19,7 @@ export const fusionStyles = (
     sx?: React.CSSProperties,
     spacingsMap?: GenericMapping<SpacingKeys, SpacingValues>
 ) => {
-    const spacings = spacingsMap ? getValuesFromStyleMap(spacingsMap, SpacingKeys, SpacingValues) : null
+    const spacings = spacingsMap ? getValuesFromStyleMap(spacingsMap, SpacingKeys, SpacingValues) as GenericCSSProps : null
     return {
         ...sx,
         ...spacings,

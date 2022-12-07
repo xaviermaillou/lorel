@@ -1,6 +1,10 @@
 import React from "react";
 import { GenericMapping } from "..";
 
+export interface GenericCSSProps {
+    [index: string]: string
+}
+
 export enum SpacingKeys {
     p = "padding",
     pt = "padding-top",
