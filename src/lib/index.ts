@@ -9,7 +9,8 @@ const getValuesFromStyleMap = (map: any, keysEnum: any, valuesPalette: any, defa
     Object.entries(map)?.forEach(([key, value]) => {
         const newKey = keysEnum[(key as keyof typeof keysEnum)] as string
         const newValue = valuesPalette[(value as keyof typeof valuesPalette)] as string
-        values[newKey] = newValue + defaultValue
+        values[newKey] = newValue
+        if (defaultValue) values[newKey] += defaultValue
     })
     return {
         ...values,
@@ -25,8 +26,9 @@ const fusionSubStyles = (map: any, keysEnum: any, valuesPalettesArray: any[], de
             i === 0 ?
                 values[newKey] = valuesPalettesArray[i][value]
                 :
-                values[newKey] += valuesPalettesArray[i][value]
+                values[newKey] += " " + valuesPalettesArray[i][value]
         })
+        if (defaultValue) values[newKey] += defaultValue
     })
     return {
         ...values,
