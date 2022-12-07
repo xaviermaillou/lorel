@@ -1,14 +1,29 @@
 import React from "react";
 import { GenericMapping } from "../types";
-import { SpacingValues, SpacingKeys, GenericCSSProps } from "../types/style";
+import { SpacingKeys, GenericCSSProps, BorderKeys } from "../types/style";
+import { colorsPalette, spacingsPalette, weightsPalette } from "../lib/style"
 
 // TODO: find a better way for typing parameters
-export const getValuesFromStyleMap = (map: any, keysEnum: any, valuesEnum: any): GenericCSSProps => {
-    const values: {[index: string]: string} = {}
+const getValuesFromStyleMap = (map: any, keysEnum: any, valuesPalette: any, defaultValue?: string): GenericCSSProps => {
+    const values: GenericCSSProps = {}
     Object.entries(map)?.forEach(([key, value]) => {
         const newKey = keysEnum[(key as keyof typeof keysEnum)] as string
-        const newValue = valuesEnum[(value as keyof typeof valuesEnum)] as string
-        values[newKey] = newValue
+        const newValue = valuesPalette[(value as keyof typeof valuesPalette)] as string
+        values[newKey] = newValue + defaultValue
+    })
+    return {
+        ...values,
+    }
+}
+
+const fusionSubStyles = (map: any, keysEnum: any, valuesPalettesArray: any[], defaultValue?: string) => {
+    const values: GenericCSSProps = {}
+    Object.entries(map)?.forEach(([key, value]) => {
+        const newKey = keysEnum[(key as keyof typeof keysEnum)] as string
+        const newValue = value as Object
+        Object.values(newValue)?.forEach((value, i) => {
+            values[newKey] += valuesPalettesArray[i][value]
+        })
     })
     return {
         ...values,
@@ -17,11 +32,15 @@ export const getValuesFromStyleMap = (map: any, keysEnum: any, valuesEnum: any):
 
 export const fusionStyles = (
     sx?: React.CSSProperties,
-    spacingsMap?: GenericMapping<SpacingKeys, SpacingValues>
+    spacingsMap?: GenericMapping<SpacingKeys>,
+    bordersMap?: GenericMapping<BorderKeys>
 ) => {
-    const spacings = spacingsMap ? getValuesFromStyleMap(spacingsMap, SpacingKeys, SpacingValues) as GenericCSSProps : null
+    const spacings = spacingsMap ? getValuesFromStyleMap(spacingsMap, SpacingKeys, spacingsPalette) as GenericCSSProps : null
+    const borders = bordersMap ? fusionSubStyles(bordersMap, BorderKeys, [weightsPalette, colorsPalette], " solid") as GenericCSSProps : null
+    console.log(borders)
     return {
         ...sx,
         ...spacings,
+        ...borders,
     }
 }

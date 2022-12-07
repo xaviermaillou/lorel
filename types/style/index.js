@@ -11,14 +11,15 @@ export var SpacingKeys;
     SpacingKeys["mb"] = "margin-bottom";
     SpacingKeys["ml"] = "margin-left";
 })(SpacingKeys || (SpacingKeys = {}));
-export var SpacingValues;
-(function (SpacingValues) {
-    SpacingValues[SpacingValues["0px"] = 0] = "0px";
-    SpacingValues[SpacingValues["24px"] = 1] = "24px";
-    SpacingValues[SpacingValues["48px"] = 2] = "48px";
-    SpacingValues[SpacingValues["72px"] = 3] = "72px";
-    SpacingValues[SpacingValues["96px"] = 4] = "96px";
-    SpacingValues[SpacingValues["192px"] = 5] = "192px";
-    SpacingValues[SpacingValues["384px"] = 6] = "384px";
-    SpacingValues[SpacingValues["768px"] = 7] = "768px";
-})(SpacingValues || (SpacingValues = {}));
+export var BorderKeys;
+(function (BorderKeys) {
+    BorderKeys["b"] = "border";
+    BorderKeys["bt"] = "border-top";
+    BorderKeys["btr"] = "border-top-right";
+    BorderKeys["br"] = "border-right";
+    BorderKeys["bbr"] = "border-bottom-right";
+    BorderKeys["bb"] = "border-bottom";
+    BorderKeys["bbl"] = "border-bottom-left";
+    BorderKeys["bl"] = "border-left";
+    BorderKeys["btl"] = "border-top-left";
+})(BorderKeys || (BorderKeys = {}));

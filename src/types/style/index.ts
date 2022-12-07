@@ -5,6 +5,11 @@ export interface GenericCSSProps {
     [index: string]: string
 }
 
+export interface BorderValuesProps {
+    weight?: string
+    color?: string
+}
+
 export enum SpacingKeys {
     p = "padding",
     pt = "padding-top",
@@ -18,18 +23,20 @@ export enum SpacingKeys {
     ml = "margin-left",
 }
 
-export enum SpacingValues {
-    "0px",
-    "24px",
-    "48px",
-    "72px",
-    "96px",
-    "192px",
-    "384px",
-    "768px",
+export enum BorderKeys {
+    b = "border",
+    bt = "border-top",
+    btr = "border-top-right",
+    br = "border-right",
+    bbr = "border-bottom-right",
+    bb = "border-bottom",
+    bbl = "border-bottom-left",
+    bl = "border-left",
+    btl = "border-top-left"
 }
 
 export interface CommonProps {
     sx?: React.CSSProperties
-    spacing?: GenericMapping<SpacingKeys, SpacingValues>
+    spacing?: GenericMapping<SpacingKeys>
+    borders?: GenericMapping<BorderKeys>
 }

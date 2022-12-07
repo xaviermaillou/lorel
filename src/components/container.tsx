@@ -8,7 +8,7 @@ interface ContainerProps extends CommonProps {
 }
 
 const Container = (props: ContainerProps) => {
-    const styles = fusionStyles(props.sx, props.spacing)
+    const styles = fusionStyles(props.sx, props.spacing, props.borders)
 
     return (
         <div style={{

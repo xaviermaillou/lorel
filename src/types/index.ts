@@ -1,3 +1,4 @@
-export type GenericMapping<KeyType, ValueType> = {
-    [Property in keyof KeyType]: ValueType
+// TODO: find a way to inject an object so that its keys replace "any" here
+export type GenericMapping<KeyType> = {
+    [Property in keyof KeyType]: any
 }
