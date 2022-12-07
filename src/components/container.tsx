@@ -12,8 +12,8 @@ const Container = (props: ContainerProps) => {
 
     return (
         <div style={{
+            ...basicStyle,
             ...styles,
-            ...basicStyle
         }}
         ></div>
     )
