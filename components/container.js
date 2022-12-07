@@ -1,11 +1,8 @@
 import React from "react";
 import { fusionStyles } from "../lib";
-import { SpacingValues } from "../types/style";
-const containerDefaultStyles = {
-    padding: SpacingValues[1]
-};
+import { basicStyle } from "../lib/style";
 const Container = (props) => {
     const styles = fusionStyles(props.sx, props.spacing);
-    return (React.createElement("div", { style: Object.assign({}, styles) }));
+    return (React.createElement("div", { style: Object.assign(Object.assign({}, styles), basicStyle) }));
 };
 export default Container;
