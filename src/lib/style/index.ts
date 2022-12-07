@@ -21,9 +21,9 @@ export const colorsPalette = {
     whitePaper: colorsLib.lightTheme.background,
     blackInk: colorsLib.lightTheme.color.primary,
     washyInk: colorsLib.lightTheme.color.secondary,
-    carbonPaper: colorsLib.lightTheme.background,
-    chalk: colorsLib.lightTheme.color.primary,
-    lightChalk: colorsLib.lightTheme.color.secondary,
+    carbonPaper: colorsLib.darkTheme.background,
+    chalk: colorsLib.darkTheme.color.primary,
+    lightChalk: colorsLib.darkTheme.color.secondary,
 }
 
 export const weightsPalette = {
