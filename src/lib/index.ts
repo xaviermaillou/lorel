@@ -24,7 +24,8 @@ const fusionSubStyles = (map: any, keysEnum: any, valuesPalettesArray: any[], de
         Object.values(newValue)?.forEach((value, i) => {
             console.log("palette", valuesPalettesArray[i])
             console.log("value", value)
-            values[newKey] += valuesPalettesArray[i][value] + " "
+            console.log("result", valuesPalettesArray[i][value])
+            values[newKey] += (i > 0 ? " " : "") + valuesPalettesArray[i][value]
         })
     })
     return {
