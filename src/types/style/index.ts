@@ -1,5 +1,4 @@
 import React from "react";
-import { GenericMapping } from "..";
 
 export interface GenericCSSProps {
     [index: string]: string
@@ -20,23 +19,17 @@ export enum SpacingKeys {
     mt = "margin-top",
     mr = "margin-right",
     mb = "margin-bottom",
-    ml = "margin-left",
+    ml = "margin-left"
 }
 
 export enum BorderKeys {
     b = "border",
     bt = "border-top",
-    btr = "border-top-right",
     br = "border-right",
-    bbr = "border-bottom-right",
     bb = "border-bottom",
-    bbl = "border-bottom-left",
-    bl = "border-left",
-    btl = "border-top-left"
+    bl = "border-left"
 }
 
 export interface CommonProps {
     sx?: React.CSSProperties
-    spacing?: GenericMapping<SpacingKeys>
-    borders?: GenericMapping<BorderKeys>
 }

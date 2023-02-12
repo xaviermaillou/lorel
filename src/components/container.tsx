@@ -1,5 +1,4 @@
 import React from "react"
-import { fusionStyles } from "../lib"
 import { basicStyle } from "../lib/style"
 import { CommonProps } from "../types/style"
 
@@ -8,8 +7,8 @@ interface ContainerProps extends CommonProps {
 }
 
 const Container = (props: ContainerProps) => {
-    const styles = fusionStyles(props.sx, props.spacing, props.borders)
-console.log("STYLES", styles)
+    const styles = props.sx
+
     return (
         <div style={{
             ...basicStyle,
